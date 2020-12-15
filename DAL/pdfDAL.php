@@ -1,6 +1,6 @@
 <?php
 require_once 'database.php';
-require_once 'source.php';
+require_once '../model/source.php';
 
   class pdfDAL {
 
@@ -14,7 +14,7 @@ require_once 'source.php';
       }
 
       function getSources(){
-        $sql = "SELECT `ID`, `link`, `title`, `author`, `release_date`, `summary`, `type`, `category`, `text`
+        $sql = "SELECT `ID`, `link`, `title`, `author`, `release_date`, `abstract`, `type`, `category`, `text`
                   FROM `sources`";
 
         $sources = [];
@@ -22,7 +22,7 @@ require_once 'source.php';
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
                 $source = new Source($row["ID"], $row["link"], $row["title"],
-                    $row["author"], $row["summary"], $row["type"], $row["category"]);
+                    $row["author"], $row["release_date"], $row["abstract"]);
                 $sources[] = $source;
           }
           return $sources;

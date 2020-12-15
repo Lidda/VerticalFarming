@@ -5,19 +5,16 @@
       public $title;
       public $author;
       public $release_date;
-      public $summary;
-      public $type;
-      public $category;
+      public $abstract;
       public $text;
 
-  	  function __construct($ID, $link, $title, $author, $summary, $type, $category){
+  	  function __construct($ID, $link, $title, $author, $year, $abstract){
   		  $this->ID = $ID;
         $this->link = $link;
         $this->title = $title;
+        $this->release_date = $year;
         $this->author = $author;
-        $this->summary = $summary;
-        $this->type = $type;
-        $this->category = $category;
+        $this->abstract = $abstract;
   	  }
 
   }
