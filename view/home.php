@@ -3,16 +3,16 @@
   // Include 'Composer' autoloader.
   include '../vendor/autoload.php';
 
-  require_once '../DAL/pdfDAL.php';
+  require_once '../DAL/sourceDAL.php';
   require_once '../model/source.php';
 
-  $pdfDAL = new pdfDAL();
-  $sources = $pdfDAL->getSources();
+  $pdfDAL = new sourceDAL();
+  $sources = $sourceDAL->getSources();
 
   foreach ($sources as $pdf){
-    echo $pdf->title . "</br>";
-    echo "<i>". $pdf->author . "</i></br>";
-    echo $pdf->abstract . "</br></br>";
+    echo $pdf->GetTitle . "</br>";
+    echo "<i>". $pdf->GetAuthor . "</i></br>";
+    echo $pdf->GetAbstract . "</br></br>";
   }
 
   /*foreach($sources as $s){
