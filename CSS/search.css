@@ -1,0 +1,27 @@
+body {
+  font-family: roboto;
+}
+
+#content{
+  margin: 10% 30%;
+  height: 20%;
+}
+
+#content header {
+  text-align: center;
+  font-size: 20;
+}
+
+#content form {
+  margin-left: 25%;
+}
+
+#content input[type=text]{
+  width: 70%;
+  height: 15%;
+  margin-top: 5%;
+}
+
+#content button{
+  margin-left: 2%;
+}

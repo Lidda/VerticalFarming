@@ -6,13 +6,20 @@
   require_once '../DAL/sourceDAL.php';
   require_once '../model/source.php';
 
-  $pdfDAL = new sourceDAL();
+  $sourceDAL = new sourceDAL();
   $sources = $sourceDAL->getSources();
 
-  foreach ($sources as $pdf){
-    echo $pdf->GetTitle . "</br>";
-    echo "<i>". $pdf->GetAuthor . "</i></br>";
-    echo $pdf->GetAbstract . "</br></br>";
+  //print_r($sources);
+
+  foreach ($sources as $s){
+    echo $s->GetTitle() . "</br>";
+    echo "<i>". $s->GetAuthor() . "</i></br>";
+    if(!$s->GetAbstractEN() == ""){
+      echo $s->GetAbstractEN() . "</br>";
+    }else if(!$s->GetAbstractNL() == ""){
+      echo $s->GetAbstractNL() . "</br>";
+    }
+    echo "</br></br>";
   }
 
   /*foreach($sources as $s){

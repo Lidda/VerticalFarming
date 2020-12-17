@@ -1,12 +1,12 @@
 <?php
   class WURcURL {
-    function getXML(){
+    function getXML($link){
       error_reporting(E_ALL);
       ini_set('display_errors', 1);
 
       $ch = curl_init();
 
-      curl_setopt($ch, CURLOPT_URL, 'https://library.wur.nl/WebQuery/biokennis?q=vertical+farming');
+      curl_setopt($ch, CURLOPT_URL, $link);
 
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 

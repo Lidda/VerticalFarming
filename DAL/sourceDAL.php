@@ -14,16 +14,41 @@ require_once '../model/source.php';
       }
 
       function getSources(){
-        $sql = "SELECT `ID`, `link`, `title`, `author`, `release_date`, `abstractNL`, `abstractEN`, `type`, `category`, `text`
+        $sql = "SELECT `ID`, `link`, `title`, `author`, `release_date`, `abstractNL`, `abstractEN`, `type`, `category`, `text`, `keywords`
                   FROM `sources`";
 
         $sources = [];
         $result = mysqli_query($this->connection, $sql);
         if (mysqli_num_rows($result) > 0) {
           while ($row = mysqli_fetch_assoc($result)) {
-                $source = new Source($row["ID"], $row["link"], $row["title"],
-                    $row["author"], $row["release_date"], $row["abstractNL"], $row["abstractEN"]);
+                $source = new Source($row["link"], $row["title"],
+                    $row["author"], $row["release_date"], $row["abstractNL"], $row["abstractEN"], $row["keywords"]);
                 $sources[] = $source;
+          }
+          return $sources;
+        }
+      }
+
+      function GetSourcesBySearchTerm($searchTerm){
+        $sql = "SELECT `ID`, `link`, `title`, `author`, `release_date`, `abstractNL`, `abstractEN`, `type`, `category`, `text`, `keywords`
+                  FROM `sources`";
+        $sql .= " WHERE link LIKE '%$searchTerm%'
+                OR title LIKE '%$searchTerm%'
+                OR author LIKE '%$searchTerm%'
+                OR release_date LIKE '%$searchTerm%'
+                OR abstractNL LIKE '%$searchTerm%'
+                OR abstractEN LIKE '%$searchTerm%'
+                OR type LIKE '%$searchTerm%'
+                OR text LIKE '%$searchTerm%'
+                OR keywords LIKE '%$searchTerm%'";
+
+        $sources = [];
+        $result = mysqli_query($this->connection, $sql);
+        if (mysqli_num_rows($result) > 0) {
+          while ($row = mysqli_fetch_assoc($result)) {
+              $source = new Source($row["link"], $row["title"],
+                  $row["author"], $row["release_date"], $row["abstractNL"], $row["abstractEN"], $row["keywords"]);
+              $sources[] = $source;
           }
           return $sources;
         }

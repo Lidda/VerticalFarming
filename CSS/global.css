@@ -1,0 +1,13 @@
+
+input[type=submit] {
+  height: 15%;
+  background-color: #4285F4;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+}
+
+input[type=submit]:hover{
+  cursor: pointer;
+}

@@ -69,6 +69,14 @@
     		$this->abstractEN = $abstractEN;
     	}
 
+      public function GetAbstract(){
+        if(!$this->abstractEN == ""){
+          return $this->abstractEN;
+        } else {
+          return $this->abstractNL;
+        }
+      }
+
     	public function GetText(){
     		return $this->text;
     	}

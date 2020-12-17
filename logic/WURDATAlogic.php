@@ -8,7 +8,7 @@
 
     function __construct(){
       $this->wurcurl = new WURcURL();
-      $this->xml = $this->wurcurl->getXML();
+      $this->xml = $this->wurcurl->getXML("https://library.wur.nl/WebQuery/biokennis?q=vertical+farming");
     }
 
     function processXML(){
