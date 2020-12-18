@@ -6,6 +6,7 @@
     $searchTerm = $_GET["searchTerm"];
 
     $sourceDAL = new sourceDAL();
+    $sources = [];
     $sources = $sourceDAL->GetSourcesBySearchTerm($searchTerm);
 
     /*foreach ($sources as $s){
@@ -29,16 +30,19 @@
     <section id='content'>
       <?php
       echo '<header><i>'.$searchTerm.'</i> search results:</header>';
-      foreach($sources as $s){
-        echo '
-          <article>
-            <title>'.$s->GetTitle().'</title>
-            <label><i>'.$s->GetAuthor().'</i></label>
-            <label> <a href="'.$s->GetLink().'" target="_blank" rel="noopener noreferrer">'.$s->GetLink().'</a></label>
-            <label id="abstractLabel"><b>ABSTRACT</b></label>
-            <label>'.$s->GetAbstract().'</label>
-          </article>
-        ';
+
+      if($sources != null){
+        foreach($sources as $s){
+          echo '
+            <article>
+              <title>'.$s->GetTitle().'</title>
+              <label><i>'.$s->GetAuthor().'</i></label>
+              <label> <a href="'.$s->GetLink().'" target="_blank" rel="noopener noreferrer">'.$s->GetLink().'</a></label>
+              <label id="abstractLabel"><b>ABSTRACT</b></label>
+              <label>'.$s->GetAbstract().'</label>
+            </article>
+          ';
+        }
       }
     ?>
     </section>
